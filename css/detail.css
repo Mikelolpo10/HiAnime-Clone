@@ -1,0 +1,112 @@
+header {
+  position: relative;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  box-sizing: border-box;
+  background-color: #2d2b43;
+}
+/*HARUSNYA PAKE DISPLAY FLEX DAN JUSTIFY * ALIGN CONTENT AJA ATUH BIAR G RIBET*/
+#header-left {
+  display: flex;
+}
+
+#menu-btn {
+  padding: 0.7rem 1rem;
+  width: fit-content;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu-btn-active {
+  color: #ffbade;
+}
+
+#hianime-logo {
+  padding: 0.5rem 0;
+  width: 8.6rem;
+}
+
+#header-right {
+  margin-left: auto;
+  display: flex;
+}
+
+#search-btn {
+  padding: 0.7rem;
+  font-size: 20px;
+}
+
+#login-btn {
+  margin: 0.6rem 0.8rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #ffbade;
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  cursor: pointer;
+}
+#top-info {
+  background: url('https://cdn.noitatnemucod.net/thumbnail/300x400/100/0e05c4d1a105058516d1f96bc78a33d5.jpg') no-repeat center center;
+  background-size: cover;       
+  height: 400px;         
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+#ti-blur {
+  backdrop-filter: blur(100px);
+  padding: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+#ti-box {
+  margin-top: -5px;
+  background: #191826;
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+  font-weight: 400;
+
+}
+#rate {
+  gap: 2px;
+  display: flex;
+  background-color: #191826;
+  font-size: 14px;
+
+}
+
+#rate1 {
+  display: inline-flex;
+  background-color: white;
+  border-radius: 0.3rem 0 0 0.3rem;
+  padding: 0.3rem;   
+}
+#rate2 {
+  display: inline-flex;
+  background-color: #ffbade;
+  padding: 0.3rem;
+}
+#rate3 {
+  display: inline-flex;
+  background-color: #84efdb;
+  padding: 0.3rem;
+}
+#rate4 {
+  display: inline-flex;
+  background-color: #81baff;
+  padding: 0.3rem;
+}

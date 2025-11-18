@@ -1,0 +1,374 @@
+* {
+    font-family:  Montserrat , "sans-serif";
+}
+
+ul {
+    padding: 0;
+}
+
+body {
+    background-color: #1f1f30;
+}
+
+header {
+    position: relative;
+    margin: 1.5rem 0.5rem;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+#menu-btn {
+    padding-left: 0.7rem;
+    padding-bottom: 1.5rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.menu-btn-active {
+    color: #ffbade;
+}
+
+#menu-opt-container {
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: rgba(11, 11, 11, 0.98);
+    z-index: 2;
+}
+
+#menu-opt-container.menu-opt-container-active {
+    display: block;
+  }
+
+#menu-opt-container li {
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+#menu-opt-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+#menu-opt-container a:hover {
+    color: #ffbade;
+}
+
+#search-sect-bg {
+    margin: 0;
+    padding: 3rem;
+    border-radius: 40px;
+    background-color: #2c2b3d;
+    color: white;
+}
+
+#hianime-logo {
+    padding-bottom: 2rem;
+    display: block;
+    width: 35%;
+    margin-right: 100px;
+}
+
+#search-bar-container {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+
+}
+
+#search-sect-bg input{
+    border-radius: 10px;
+    padding: 17px 250px 12px 20px;
+    margin: 0;
+    width: 70%;
+    border: none;
+}
+
+#search-button {
+    position: relative;
+    background-color: #ffbade;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: black;
+    font-size: 21px;
+}
+#search-button:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+#top-search {
+    margin: 2rem 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    word-spacing: 0.1rem;
+    font-size: 12px;
+    line-height: 1.8;
+    overflow: hidden;
+}
+
+#top-search * {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#watch-anime-btn {
+    position: relative;
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: flex(300px, 40%, 600px);
+    background-color: #ffbade;
+    border: none;
+    border-radius: 15px;
+    color: black;
+    font-size: 21px;
+}
+
+#watch-anime-btn a{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#watch-anime-btn:hover{
+    background-color: #ffbadee7;
+}
+
+
+/*MAIN DIBAWAH SEARCH BAR*/
+main {
+    padding: 0 0.5rem;
+}
+
+#share-sect {
+    display: grid;
+    flex-direction: row;
+}
+
+#share-title {
+    margin: 0;
+    color: #ffbade;
+    font-size: 14px;
+}
+
+#share-secd-title {
+    margin: 0.3rem 0;
+    color: #c6c6ce;
+    font-size: 12px;
+}
+
+#share-body {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+#share-count {
+    padding-left: 0.5rem;
+    width: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#share-count * {
+    margin: 0;
+    color: rgb(99, 99, 99);
+    font-weight: 500;
+}
+
+#share-count p {
+    font-size: 10px;
+}
+
+.share-btn {
+    margin-left: 0.5rem;
+    display: flex;
+    align-self: top;
+    align-items: center;
+    justify-content: center;
+    width: 3.3rem;
+    height: 2rem;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+    transform: translateY(0%);
+    transition: all 0.4s ease;
+}
+
+.share-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-20%);
+}
+
+#share-telegram {
+    background-color: #008ad0;
+}
+
+#share-twitter {
+    background-color: black;
+}
+
+#share-facebook {
+    background-color: #4266b0;
+}
+
+#share-reddit {
+    background-color: #ff4600;
+}
+
+#share-general {
+    background-color: #95d038;
+}
+
+#about-info {
+    color: white;
+}
+
+#about-info ul {
+    padding: 0 1rem;
+}
+
+#about-info ul li {
+    padding-bottom: 1rem;
+}
+
+.text-desc {
+    line-height: 1.3;
+    color: #c6c6ce;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/*TRENDING POSTS*/
+#trending-posts {
+    margin-top: 80px;
+    color: white;
+}
+
+.post-card {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #2b2a3c;
+}
+
+
+#post-meta {
+    padding: 1rem 0;
+    display: flex;
+}
+
+.post-tag {
+    margin-left: 20px;
+    color: #b9b9b9;
+    font-size: 12px;
+}
+
+.post-time {
+    margin-left: 20px;
+    color: #858585;
+    font-size: 12px;
+}
+
+.post-comments {
+    margin-left: auto;
+    margin-right: 20px;
+    color: rgb(207, 207, 207);
+    font-size: 12px;
+}
+
+#post-info {
+    padding-left: 1.2rem;
+}
+
+#post-info a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 100;
+}
+  
+#post-info h4 {
+    margin: 0;
+}
+
+.post-desc {
+    color: #b9b9b9;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+
+#post-user {
+    display: flex;
+    align-items: center;
+}
+
+#post-user img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px 20px 20px;
+}
+
+#post-user a {
+    text-decoration: none;
+    color: rgb(189, 189, 189);
+    margin-top: -15px;
+    font-size: 13px;
+}
+
+#post-user a:hover{
+    color: #ffbade;
+}
+
+#load-btn {
+    margin-top: 30px;
+    position: relative;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    width: flex(300px, 40%, 600px);
+    background-color: #363545;
+    border: none;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#load-btn a {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#license {
+    margin: 40px 0px;
+    font-size: 13px;
+    color: rgb(212, 212, 212);
+    font-weight: 500;
+}
