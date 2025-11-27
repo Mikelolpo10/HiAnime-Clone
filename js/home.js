@@ -47,6 +47,44 @@ function trendingRender(data) {
   document.getElementById("trending-slider").innerHTML += html;
 }
 
+async function spotlightData() {
+  try {
+    const res = await fetch("/data/home/main-content/spotlight-carousel.json")
+    const data = await res.json()
+    
+    spotlightRender(data)
+    
+    const navButtons = document.querySelectorAll(".carousel-nav-option");
+    const slides = document.querySelectorAll(".carousel-slide");
+
+    navButtons.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        if (!btn.classList.contains("carousel-nav-option-active")) {
+          navButtons.forEach(b => b.classList.remove("carousel-nav-option-active"));
+          btn.classList.add("carousel-nav-option-active");
+        }
+
+        slides.forEach(slide => {
+          slide.style.transform = `translateX(-${index * 100}%)`;
+        });
+      });
+    });
+  } catch (err) {
+    console.error("❌ ERROR: Gagal memuat spotlight data", err);
+  }
+}
+
+async function trendingData() {
+  try {
+    const res = await fetch("/data/home/main-content/trending.json")
+    const data = await res.json()
+
+    trendingRender(data)
+  } catch (err){
+    console.error("❌ ERROR: Gagal memuat trending data", err)
+  }
+}
+
 function renderMain(btn_primary_link, film_poster_img, desi_head_title, sub_count, dub, btn_secondary_link, type, duration) {
   return `<div class="main-content-card">
     <div class="main-content-card-img">
@@ -95,82 +133,95 @@ function renderHtml(data, target, qnty, renderType) {
     count++
 
     const { btn_primary_link, film_poster_img, desi_head_title, sub_count, dub_count, btn_secondary_link, type, duration} = child
-    let dub = ``
+    let dubHtml = ``
 
     if (count <= qnty) {
-      dub = 
-      `<span class="card-dub">
-        <i class="fa-solid fa-microphone"></i>
-        ${dub_count}
-      </span>`
-
-      html += renderType(btn_primary_link, film_poster_img, desi_head_title, sub_count, dub, btn_secondary_link, type, duration)
+      if (dub_count === 0) {
+        dubHtml = 
+        `<span class="card-dub">
+          <i class="fa-solid fa-microphone"></i>
+          ${dub_count}
+        </span>`
+      }
+      html += renderType(btn_primary_link, film_poster_img, desi_head_title, sub_count, dubHtml, btn_secondary_link, type, duration)
     }
   })
 
   if (renderType === renderMain) {
     document.getElementById(target).insertAdjacentHTML("beforebegin", html)
   } else {
-    console.log(`tes`)
     document.getElementById(target).innerHTML = html
   }
 }
 
-//fetch data
-async function spotlightData() {
-  try {
-    const res = await fetch("/data/home/main-content/spotlight-carousel.json")
-    const data = await res.json()
-    
-    spotlightRender(data)
-    
-    const navButtons = document.querySelectorAll(".carousel-nav-option");
-    const slides = document.querySelectorAll(".carousel-slide");
 
-    navButtons.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        if (!btn.classList.contains("carousel-nav-option-active")) {
-          navButtons.forEach(b => b.classList.remove("carousel-nav-option-active"));
-          btn.classList.add("carousel-nav-option-active");
-        }
 
-        slides.forEach(slide => {
-          slide.style.transform = `translateX(-${index * 100}%)`;
-        });
-      });
-    });
-  } catch (err) {
-    console.error("❌ ERROR: Gagal memuat spotlight data", err);
-  }
-}
-
-async function trendingData() {
-  try {
-    const res = await fetch("/data/home/main-content/trending.json")
-    const data = await res.json()
-
-    trendingRender(data)
-  } catch (err){
-    console.error("❌ ERROR: Gagal memuat trending data", err)
-  }
-}
-
-async function factoryRender(url, target, qnty, renderType) {
+async function factoryFetch(url, target, qnty, renderType) {
   try {
     const res = await fetch(url)
     const data = await res.json()
-
     renderHtml(data, target, qnty, renderType)
   } catch (err){
     console.error(`❌ ERROR: Gagal memuat ${url}`, err)
   }
 }
 
+function renderGenres(data, limit=24) {
+  let html = ``
+  let indexCount = 1
+  let typeCount = 0
+  
+  data.forEach((child) => {
+    if (indexCount <= limit) {
+      const { genre, url } = child
+      indexCount++
+      typeCount++
+      
+      if (typeCount >= 8) {
+        typeCount = 1
+      }
+      
+      html += 
+      `<div class="genre-opt genre-type-${typeCount}">
+      <a href="${url}" title="${genre}"></a>
+      ${genre}
+      </div>`
+    }
+  })
+  document.getElementById("genre-wrapper").innerHTML = html
+}
 
-factoryRender("/data/home/main-content/top-airing.json", "top-airing-view-more", 4, renderMain)
-factoryRender("/data/home/main-content/most-popular.json", "most-popular-view-more", 4, renderMain)
-factoryRender("/data/home/main-content/latest-completed.json", "latest-completed-more", 4, renderMain)
-factoryRender("/data/home/secondary-content/latest-episode.json", "latest-episode-card-wrapper", 12, renderSecondary)
-factoryRender("/data/home/secondary-content/new-on-hianime.json", "new-on-hianime-card-wrapper", 12, renderSecondary)
+async function genresData() {
+  try {
+    const res = await fetch("/data/home/secondary-content/genres.json")
+    const data = await res.json()
+    renderGenres(data)
+    
+    document.getElementById("genres-more").addEventListener("click", function() {
+      // if (this.innerText ===`Show more`) {
+      //   this.textContent = `Show less`
+      //   renderGenres(data, 40)
+      // } else {
+      //   this.textContent = `Show more`
+      //   renderGenres(data, 24)
+      // }
 
+      const expanded = this.textContent === "Show more";
 
+      this.textContent = expanded ? "Show less" : "Show more";
+      renderGenres(data, expanded ? 40 : 24);
+    })
+  } catch(err) {
+    console.log(`❌ ERROR: Gagal memuat Genres`, err)
+  }
+}
+
+spotlightData()
+trendingData()
+factoryFetch("/data/home/main-content/top-airing.json", "top-airing-view-more", 4, renderMain)
+factoryFetch("/data/home/main-content/most-popular.json", "most-popular-view-more", 4, renderMain)
+factoryFetch("/data/home/main-content/latest-completed.json", "latest-completed-more", 4, renderMain)
+factoryFetch("/data/home/secondary-content/latest-episode.json", "latest-episode-card-wrapper", 12, renderSecondary)
+factoryFetch("/data/home/secondary-content/new-on-hianime.json", "new-on-hianime-card-wrapper", 12, renderSecondary)
+factoryFetch("/data/home/secondary-content/top-upcoming.json", "top-upcoming-card-wrapper", 12, renderSecondary)
+genresData()

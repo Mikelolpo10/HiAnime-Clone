@@ -551,7 +551,122 @@ header {
   text-overflow: ellipsis;
 }
 
+.secondary-content-card-meta a:hover {
+  color: #ffbade;
+}
+
 .card-type {
   color: rgb(156, 156, 156);
   font-size: 14px;
 }
+
+/*Estimated schedule*/
+#estimated-schedule-sect {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#estimated-schedule-sect h1 {
+  margin-bottom: 2rem;
+}
+
+#estimated-schedule-date-container {
+  margin: 0 1.6rem;
+  position: relative;
+  background-color: #008ad0;
+}
+
+/*Genres*/
+#genres-sect {
+  margin-top: 1rem;
+}
+
+#genres-content-container {
+  padding: 1rem;
+  background-color: #2f2f3d;
+}
+
+#genre-wrapper {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background-color: #2f2f3d;
+}
+
+.genre-opt {
+  padding: 0.6rem 0;
+  padding-left: 0.5rem;
+  position: relative;
+  border-radius: 0.2rem;
+  background-color: #2f2f3d;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.genre-opt:hover {  
+  background-color: #8887a080;
+}
+
+.genre-opt a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
+#genres-more {
+  padding: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.4rem;
+  background-color: #8887a080;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#genres-more:hover {
+  background-color: #8887a09e;
+}
+
+.genre-type-1 {
+  color: #d3e4a9;
+}
+
+.genre-type-2 {
+  color: rgb(255, 186, 222);
+}
+
+.genre-type-3 {
+  color: rgb(252, 136, 123);
+}
+
+.genre-type-4 {
+  color: rgb(204, 171, 218);
+}
+
+.genre-type-5 {
+  color: rgb(171, 204, 216);
+}
+
+.genre-type-6 {
+  color: rgb(216, 178, 171);
+}
+
+.genre-type-7 {
+  color: rgb(134, 227, 206);
+}
+
+/*Top 10*/
+#top-10-sect {
+  margin-top: 1rem;
+}
+
